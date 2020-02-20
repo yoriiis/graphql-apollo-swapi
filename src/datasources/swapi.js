@@ -10,6 +10,10 @@ class SwAPI extends RESTDataSource {
 		return this.get(`people/${id}`);
 	}
 
+	async getFilmsByPeople (id) {
+		return this.get(`films/${id}`);
+	}
+
 	async getFilms (id) {
 		return this.get(`films/${id}`);
 	}
