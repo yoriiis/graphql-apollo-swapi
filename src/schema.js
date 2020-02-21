@@ -4,9 +4,12 @@ const {
 } = require('graphql');
 const getPeople = require('./queries/get-people');
 const getAllPeople = require('./queries/get-all-people');
-const getFilms = require('./queries/get-films');
+const getFilm = require('./queries/get-films');
 const getPlanet = require('./queries/get-planet');
 const getSpecie = require('./queries/get-specie');
+const getAllSpecie = require('./queries/get-all-specie');
+const getStarship = require('./queries/get-starship');
+const getVehicles = require('./queries/get-vehicles');
 
 const schema = new GraphQLSchema({
 	query: new GraphQLObjectType({
@@ -14,9 +17,12 @@ const schema = new GraphQLSchema({
 		fields: {
 			getPeople,
 			getAllPeople,
-			getFilms,
+			getFilm,
 			getPlanet,
-			getSpecie
+			getSpecie,
+			getAllSpecie,
+			getStarship,
+			getVehicles
 		}
 	})
 });

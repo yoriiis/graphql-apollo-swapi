@@ -21,7 +21,7 @@ const SpecieType = new GraphQLObjectType({
 		homeworld: { type: GraphQLString },
 		language: { type: GraphQLString },
 		people: {
-			type: new GraphQLList(PeopleType),
+			type: GraphQLList(PeopleType),
 			resolve (_source, _args, { dataSources }) {
 				return createPromisesFromUrls({
 					urls: _source.people,
@@ -30,11 +30,11 @@ const SpecieType = new GraphQLObjectType({
 			}
 		},
 		films: {
-			type: new GraphQLList(FilmType),
+			type: GraphQLList(FilmType),
 			resolve (_source, _args, { dataSources }) {
 				return createPromisesFromUrls({
 					urls: _source.films,
-					method: dataSources.swAPI.getFilms.bind(dataSources.swAPI)
+					method: dataSources.swAPI.getFilm.bind(dataSources.swAPI)
 				});
 			}
 		},

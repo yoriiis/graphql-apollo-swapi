@@ -4,7 +4,7 @@ const {
 	GraphQLInt
 } = require('graphql');
 
-const getFilms = {
+const getFilm = {
 	type: FilmType,
 	args: {
 		id: {
@@ -13,8 +13,8 @@ const getFilms = {
 		}
 	},
 	resolve: async (_source, { id }, { dataSources }) => {
-		return dataSources.swAPI.getFilms(id);
+		return dataSources.swAPI.getFilm(id);
 	}
 };
 
-module.exports = getFilms;
+module.exports = getFilm;

@@ -1,4 +1,5 @@
 const FilmType = require('./Film');
+const PeopleType = require('./People');
 const { createPromisesFromUrls } = require('../functions');
 const {
 	GraphQLObjectType,
@@ -6,23 +7,25 @@ const {
 	GraphQLList
 } = require('graphql');
 
-const PlanetType = new GraphQLObjectType({
-	name: 'Planet',
+const VehiclesType = new GraphQLObjectType({
+	name: 'Vehicles',
 	fields: () => ({
 		name: { type: GraphQLString },
-		rotation_period: { type: GraphQLString },
-		orbital_period: { type: GraphQLString },
-		diameter: { type: GraphQLString },
-		climate: { type: GraphQLString },
-		gravity: { type: GraphQLString },
-		terrain: { type: GraphQLString },
-		surface_water: { type: GraphQLString },
-		population: { type: GraphQLString },
-		residents: {
-			type: GraphQLList(require('./People')),
+		model: { type: GraphQLString },
+		manufacturer: { type: GraphQLString },
+		cost_in_credits: { type: GraphQLString },
+		length: { type: GraphQLString },
+		max_atmosphering_speed: { type: GraphQLString },
+		crew: { type: GraphQLString },
+		passengers: { type: GraphQLString },
+		cargo_capacity: { type: GraphQLString },
+		consumables: { type: GraphQLString },
+		vehicle_class: { type: GraphQLString },
+		pilots: {
+			type: GraphQLList(PeopleType),
 			resolve (_source, _args, { dataSources }) {
 				return createPromisesFromUrls({
-					urls: _source.residents,
+					urls: _source.pilots,
 					method: dataSources.swAPI.getPeople.bind(dataSources.swAPI)
 				});
 			}
@@ -42,4 +45,4 @@ const PlanetType = new GraphQLObjectType({
 	})
 });
 
-module.exports = PlanetType;
+module.exports = VehiclesType;

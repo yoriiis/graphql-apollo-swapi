@@ -14,7 +14,7 @@ class SwAPI extends RESTDataSource {
 		return this.get(`people?page=${page}`);
 	}
 
-	async getFilms (id) {
+	async getFilm (id) {
 		return this.get(`films/${id}`);
 	}
 
@@ -30,6 +30,18 @@ class SwAPI extends RESTDataSource {
 
 	async getSpecie (id) {
 		return this.get(`species/${id}`);
+	}
+
+	async getAllSpecie (page = 1) {
+		return this.get(`species?page=${page}`);
+	}
+
+	async getStarship (id) {
+		return this.get(`starships/${id}`);
+	}
+
+	async getVehicles (id) {
+		return this.get(`vehicles/${id}`);
 	}
 }
 

@@ -1,5 +1,6 @@
 const FilmType = require('./Film');
-const { createPromisesFromUrls } = require('../functions');
+const PlanetType = require('./Planet');
+const { getIdFromUrl, createPromisesFromUrls } = require('../functions');
 const {
 	GraphQLObjectType,
 	GraphQLString,
@@ -17,13 +18,37 @@ const PeopleType = new GraphQLObjectType({
 		eye_color: { type: GraphQLString },
 		birth_year: { type: GraphQLString },
 		gender: { type: GraphQLString },
-		homeworld: { type: GraphQLString },
+		homeworld: {
+			type: PlanetType,
+			resolve (_source, _args, { dataSources }) {
+				const planetId = getIdFromUrl(_source.homeworld);
+				return dataSources.swAPI.getPlanet({ id: planetId });
+			}
+		},
 		films: {
-			type: new GraphQLList(FilmType),
+			type: GraphQLList(FilmType),
 			resolve (_source, _args, { dataSources }) {
 				return createPromisesFromUrls({
 					urls: _source.films,
-					method: dataSources.swAPI.getFilms.bind(dataSources.swAPI)
+					method: dataSources.swAPI.getFilm.bind(dataSources.swAPI)
+				});
+			}
+		},
+		species: {
+			type: GraphQLList(require('./Specie')),
+			resolve (_source, _args, { dataSources }) {
+				return createPromisesFromUrls({
+					urls: _source.species,
+					method: dataSources.swAPI.getSpecie.bind(dataSources.swAPI)
+				});
+			}
+		},
+		starships: {
+			type: GraphQLList(require('./Specie')),
+			resolve (_source, _args, { dataSources }) {
+				return createPromisesFromUrls({
+					urls: _source.starships,
+					method: dataSources.swAPI.getStarship.bind(dataSources.swAPI)
 				});
 			}
 		}
