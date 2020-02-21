@@ -1,4 +1,5 @@
 const FilmType = require('./Film');
+const { createPromisesFromUrls } = require('../functions');
 const {
 	GraphQLObjectType,
 	GraphQLString,
@@ -20,12 +21,10 @@ const PeopleType = new GraphQLObjectType({
 		films: {
 			type: new GraphQLList(FilmType),
 			resolve (_source, _args, { dataSources }) {
-				const promises = _source.films.map(async film => {
-					const filmIdSplit = film.split('/films/');
-					const filmId = parseInt(filmIdSplit[filmIdSplit.length - 1]);
-					return dataSources.swAPI.getFilmsByPeople(filmId);
+				return createPromisesFromUrls({
+					urls: _source.films,
+					method: dataSources.swAPI.getFilms.bind(dataSources.swAPI)
 				});
-				return Promise.all(promises);
 			}
 		}
 	})

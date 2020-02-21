@@ -1,33 +1,22 @@
 const {
 	GraphQLObjectType,
-	GraphQLInt,
 	GraphQLSchema
 } = require('graphql');
-const FilmType = require('./schema/Film');
-const PeopleType = require('./schema/People');
+const getPeople = require('./queries/get-people');
+const getAllPeople = require('./queries/get-all-people');
+const getFilms = require('./queries/get-films');
+const getPlanet = require('./queries/get-planet');
+const getSpecie = require('./queries/get-specie');
 
 const schema = new GraphQLSchema({
 	query: new GraphQLObjectType({
 		name: 'RootQueryType',
 		fields: {
-			getPeople: {
-				type: PeopleType,
-				args: {
-					id: { type: GraphQLInt }
-				},
-				resolve: async (_source, { id }, { dataSources }) => {
-					return dataSources.swAPI.getPeople(id);
-				}
-			},
-			getFilms: {
-				type: FilmType,
-				args: {
-					id: { type: GraphQLInt }
-				},
-				resolve: async (_source, { id }, { dataSources }) => {
-					return dataSources.swAPI.getFilms(id);
-				}
-			}
+			getPeople,
+			getAllPeople,
+			getFilms,
+			getPlanet,
+			getSpecie
 		}
 	})
 });

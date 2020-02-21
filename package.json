@@ -2,21 +2,22 @@
   "name": "graphql-swapi",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon ./src/index.js",
-    "test:eslint": "eslint -c ./.eslintrc.js ."
+  "homepage": "https://github.com/yoriiis/graphql-swapi#readme",
+  "bugs": {
+    "url": "https://github.com/yoriiis/graphql-swapi/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yoriiis/graphql-swapi.git"
   },
-  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/yoriiis/graphql-swapi/issues"
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node ./src/index.js",
+    "start:watch": "NODE_ENV=development nodemon ./src/index.js",
+    "lint": "eslint -c ./.eslintrc.js ."
   },
-  "homepage": "https://github.com/yoriiis/graphql-swapi#readme",
   "dependencies": {
     "apollo-datasource-rest": "0.7.0",
     "apollo-server": "2.10.1",
