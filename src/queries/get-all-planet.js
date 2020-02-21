@@ -1,11 +1,11 @@
-const PeopleType = require('../schema/People');
+const PlanetType = require('../schema/Planet');
 const {
 	GraphQLInt,
 	GraphQLList
 } = require('graphql');
 
-const getAllPeople = {
-	type: new GraphQLList(PeopleType),
+const getAllPlanet = {
+	type: new GraphQLList(PlanetType),
 	args: {
 		page: {
 			type: GraphQLInt,
@@ -21,8 +21,8 @@ const getAllPeople = {
 		}
 	},
 	resolve: async (_source, { page, limit, offset }, { dataSources }) => {
-		return dataSources.swAPI.getAllPeople({ page, limit, offset }).then(response => response.results);
+		return dataSources.swAPI.getAllPlanet({ page, limit, offset }).then(response => response.results);
 	}
 };
 
-module.exports = getAllPeople;
+module.exports = getAllPlanet;

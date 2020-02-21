@@ -1,4 +1,5 @@
 const { RESTDataSource } = require('apollo-datasource-rest');
+const { requestFilterByLimitOffsetPage } = require('../functions');
 
 class SwAPI extends RESTDataSource {
 	constructor () {
@@ -10,8 +11,12 @@ class SwAPI extends RESTDataSource {
 		return this.get(`people/${id}`);
 	}
 
-	async getAllPeople (page = 1) {
-		return this.get(`people?page=${page}`);
+	async getAllPeople ({ page = 1, limit = null, offset = 0 }) {
+		const key = 'people';
+		const context = this;
+		return requestFilterByLimitOffsetPage({
+			key, context, page, limit, offset
+		});
 	}
 
 	async getFilm (id) {
@@ -28,20 +33,48 @@ class SwAPI extends RESTDataSource {
 		return this.get(url);
 	}
 
+	async getAllPlanet ({ page = 1, limit = null, offset = 0 }) {
+		const key = 'planets';
+		const context = this;
+		return requestFilterByLimitOffsetPage({
+			key, context, page, limit, offset
+		});
+	}
+
 	async getSpecie (id) {
 		return this.get(`species/${id}`);
 	}
 
-	async getAllSpecie (page = 1) {
-		return this.get(`species?page=${page}`);
+	async getAllSpecie ({ page = 1, limit = null, offset = 0 }) {
+		const key = 'species';
+		const context = this;
+		return requestFilterByLimitOffsetPage({
+			key, context, page, limit, offset
+		});
 	}
 
 	async getStarship (id) {
 		return this.get(`starships/${id}`);
 	}
 
+	async getAllStarship ({ page = 1, limit = null, offset = 0 }) {
+		const key = 'starships';
+		const context = this;
+		return requestFilterByLimitOffsetPage({
+			key, context, page, limit, offset
+		});
+	}
+
 	async getVehicles (id) {
 		return this.get(`vehicles/${id}`);
+	}
+
+	async getAllVehicles ({ page = 1, limit = null, offset = 0 }) {
+		const key = 'vehicles';
+		const context = this;
+		return requestFilterByLimitOffsetPage({
+			key, context, page, limit, offset
+		});
 	}
 }
 
