@@ -1,7 +1,3 @@
-const {
-	GraphQLList
-} = require('graphql');
-
 /**
  * Get id from SWAPI url category
  *
