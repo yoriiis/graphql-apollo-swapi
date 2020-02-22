@@ -18,7 +18,7 @@ Available npm scripts:
 
 ## Demo
 
-Online demo is available on [https://graphql-swapi.herokuapp.com/](https://graphql-swapi.herokuapp.com/).
+Online demo is available on [https://graphql-apollo-swapi.herokuapp.com/](https://graphql-apollo-swapi.herokuapp.com/).
 
 
 ## Licence 🤞
