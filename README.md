@@ -2,6 +2,12 @@
 
 GraphQL & Apollo with SWAPI full server and client.
 
+![GraphQL Playground](./screenshots/graphql-playground.jpg)
+
+## Demo
+
+Online demo is available on [https://graphql-apollo-swapi.herokuapp.com/](https://graphql-apollo-swapi.herokuapp.com/).
+
 ## Server
 
 Available npm scripts:
@@ -15,11 +21,6 @@ Available npm scripts:
 
 * `npm run start:client` - Run GraphQL client
 * `npm run start:client:watch` - Run GraphQL client width Nodemon
-
-## Demo
-
-Online demo is available on [https://graphql-apollo-swapi.herokuapp.com/](https://graphql-apollo-swapi.herokuapp.com/).
-
 
 ## Licence 🤞
 
