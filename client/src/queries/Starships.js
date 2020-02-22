@@ -1,7 +1,7 @@
 const gql = require('graphql-tag');
 
 const Starships = gql`{
-    getAllStarships {
+    getAllStarships(limit: 2, offset: 2, page: 1) {
         name
         model
         manufacturer

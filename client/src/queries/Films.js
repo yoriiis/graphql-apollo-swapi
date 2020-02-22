@@ -1,7 +1,7 @@
 const gql = require('graphql-tag');
 
 const Films = gql`{
-    getAllFilms {
+    getAllFilms(limit: 2, offset: 2, page: 1) {
         title
         episode_id
         opening_crawl

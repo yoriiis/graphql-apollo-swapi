@@ -1,7 +1,7 @@
 const gql = require('graphql-tag');
 
 const Species = gql`{
-    getAllSpecies {
+    getAllSpecies(limit: 2, offset: 2, page: 1) {
         name
         classification
         designation
