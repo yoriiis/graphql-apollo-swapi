@@ -3,6 +3,13 @@ const {
 	GraphQLString
 } = require('graphql');
 
+/**
+ * Query definition to get result from fitered category
+ *
+ * @param {String} catgory Category name
+ *
+ * @return {Object} Object definition for the query
+ */
 module.exports = (category) => {
 	return {
 		type: require(`../schema/${category.name}`),

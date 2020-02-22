@@ -5,6 +5,7 @@ const {
 
 const getAllByCategory = require('./queries/get-all-by-category');
 const getCategory = require('./queries/get-category');
+const fields = {};
 const categories = [{
 	name: 'People'
 }, {
@@ -18,7 +19,6 @@ const categories = [{
 }, {
 	name: 'Films'
 }];
-const fields = {};
 
 categories.forEach(category => {
 	fields[`getAll${category.name}`] = getAllByCategory(category);

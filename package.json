@@ -3,19 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "homepage": "https://github.com/yoriiis/graphql-swapi#readme",
-  "bugs": {
-    "url": "https://github.com/yoriiis/graphql-swapi/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yoriiis/graphql-swapi.git"
-  },
+  "bugs": "https://github.com/yoriiis/graphql-swapi/issues",
+  "repository": "git+https://github.com/yoriiis/graphql-swapi.git",
   "license": "ISC",
   "author": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development node ./src/index.js",
-    "start:watch": "NODE_ENV=development nodemon ./src/index.js",
+    "start": "npm run start:server:watch",
+    "start:server": "node ./server/src/index.js",
+    "start:server:watch": "nodemon ./server/src/index.js",
+    "start:client": "node ./client/src/index.js",
+    "start:client:watch": "nodemon ./client/src/index.js",
     "lint": "eslint -c ./.eslintrc.js ."
   },
   "dependencies": {
@@ -35,5 +33,8 @@
   },
   "devDependencies": {
     "nodemon": "2.0.2"
-  }
+  },
+  "engines": {
+		"node": ">=12.14.0"
+	}
 }

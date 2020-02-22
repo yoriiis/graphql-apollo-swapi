@@ -3,6 +3,13 @@ const {
 	GraphQLList
 } = require('graphql');
 
+/**
+ * Query definition to get all results from category
+ *
+ * @param {String} catgory Category name
+ *
+ * @return {Object} Object definition for the query
+ */
 module.exports = (category) => {
 	return {
 		type: new GraphQLList(require(`../schema/${category.name}`)),
@@ -13,11 +20,11 @@ module.exports = (category) => {
 			},
 			limit: {
 				type: GraphQLInt,
-				description: 'Count of result'
+				description: 'Limit of result (0 equal no limit)'
 			},
 			offset: {
 				type: GraphQLInt,
-				description: 'Offset for the research'
+				description: 'Offset index for the research'
 			}
 		},
 		resolve: async (_source, { page, limit, offset }, { dataSources }) => {
