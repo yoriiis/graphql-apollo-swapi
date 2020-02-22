@@ -1,4 +1,4 @@
-const FilmType = require('./Film');
+const FilmType = require('./Films');
 const { createPromisesFromUrls } = require('../functions');
 const {
 	GraphQLObjectType,
@@ -6,8 +6,8 @@ const {
 	GraphQLList
 } = require('graphql');
 
-const PlanetType = new GraphQLObjectType({
-	name: 'Planet',
+const PlanetsType = new GraphQLObjectType({
+	name: 'Planets',
 	fields: () => ({
 		name: { type: GraphQLString },
 		rotation_period: { type: GraphQLString },
@@ -22,8 +22,9 @@ const PlanetType = new GraphQLObjectType({
 			type: GraphQLList(require('./People')),
 			resolve (_source, _args, { dataSources }) {
 				return createPromisesFromUrls({
+					key: 'people',
 					urls: _source.residents,
-					method: dataSources.swAPI.getPeople.bind(dataSources.swAPI)
+					method: dataSources.swAPI.getCategory.bind(dataSources.swAPI)
 				});
 			}
 		},
@@ -31,8 +32,9 @@ const PlanetType = new GraphQLObjectType({
 			type: GraphQLList(FilmType),
 			resolve (_source, _args, { dataSources }) {
 				return createPromisesFromUrls({
+					key: 'films',
 					urls: _source.films,
-					method: dataSources.swAPI.getFilm.bind(dataSources.swAPI)
+					method: dataSources.swAPI.getCategory.bind(dataSources.swAPI)
 				});
 			}
 		},
@@ -42,4 +44,4 @@ const PlanetType = new GraphQLObjectType({
 	})
 });
 
-module.exports = PlanetType;
+module.exports = PlanetsType;

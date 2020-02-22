@@ -1,14 +1,15 @@
-const FilmType = require('./Film');
+const FilmType = require('./Films');
 const PeopleType = require('./People');
-const { createPromisesFromUrls } = require('../functions');
+const PlanetType = require('./Planets');
+const { getIdFromUrl, createPromisesFromUrls } = require('../functions');
 const {
 	GraphQLObjectType,
 	GraphQLString,
 	GraphQLList
 } = require('graphql');
 
-const SpecieType = new GraphQLObjectType({
-	name: 'Specie',
+const SpeciesType = new GraphQLObjectType({
+	name: 'Species',
 	fields: () => ({
 		name: { type: GraphQLString },
 		classification: { type: GraphQLString },
@@ -18,14 +19,21 @@ const SpecieType = new GraphQLObjectType({
 		hair_colors: { type: GraphQLString },
 		eye_colors: { type: GraphQLString },
 		average_lifespan: { type: GraphQLString },
-		homeworld: { type: GraphQLString },
+		homeworld: {
+			type: PlanetType,
+			resolve (_source, _args, { dataSources }) {
+				const planetId = getIdFromUrl(_source.homeworld);
+				return dataSources.swAPI.getCategory({ key: 'planets', id: planetId });
+			}
+		},
 		language: { type: GraphQLString },
 		people: {
 			type: GraphQLList(PeopleType),
 			resolve (_source, _args, { dataSources }) {
 				return createPromisesFromUrls({
+					key: 'people',
 					urls: _source.people,
-					method: dataSources.swAPI.getPeople.bind(dataSources.swAPI)
+					method: dataSources.swAPI.getCategory.bind(dataSources.swAPI)
 				});
 			}
 		},
@@ -33,8 +41,9 @@ const SpecieType = new GraphQLObjectType({
 			type: GraphQLList(FilmType),
 			resolve (_source, _args, { dataSources }) {
 				return createPromisesFromUrls({
+					key: 'films',
 					urls: _source.films,
-					method: dataSources.swAPI.getFilm.bind(dataSources.swAPI)
+					method: dataSources.swAPI.getCategory.bind(dataSources.swAPI)
 				});
 			}
 		},
@@ -44,4 +53,4 @@ const SpecieType = new GraphQLObjectType({
 	})
 });
 
-module.exports = SpecieType;
+module.exports = SpeciesType;

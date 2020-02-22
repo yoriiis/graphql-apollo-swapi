@@ -1,4 +1,4 @@
-const FilmType = require('./Film');
+const FilmType = require('./Films');
 const PeopleType = require('./People');
 const { createPromisesFromUrls } = require('../functions');
 const {
@@ -7,8 +7,8 @@ const {
 	GraphQLList
 } = require('graphql');
 
-const StarshipType = new GraphQLObjectType({
-	name: 'Starship',
+const StarshipsType = new GraphQLObjectType({
+	name: 'Starships',
 	fields: () => ({
 		name: { type: GraphQLString },
 		model: { type: GraphQLString },
@@ -27,8 +27,9 @@ const StarshipType = new GraphQLObjectType({
 			type: GraphQLList(PeopleType),
 			resolve (_source, _args, { dataSources }) {
 				return createPromisesFromUrls({
+					key: 'people',
 					urls: _source.pilots,
-					method: dataSources.swAPI.getPeople.bind(dataSources.swAPI)
+					method: dataSources.swAPI.getCategory.bind(dataSources.swAPI)
 				});
 			}
 		},
@@ -36,8 +37,9 @@ const StarshipType = new GraphQLObjectType({
 			type: GraphQLList(FilmType),
 			resolve (_source, _args, { dataSources }) {
 				return createPromisesFromUrls({
+					key: 'films',
 					urls: _source.films,
-					method: dataSources.swAPI.getFilm.bind(dataSources.swAPI)
+					method: dataSources.swAPI.getCategory.bind(dataSources.swAPI)
 				});
 			}
 		},
@@ -47,4 +49,4 @@ const StarshipType = new GraphQLObjectType({
 	})
 });
 
-module.exports = StarshipType;
+module.exports = StarshipsType;

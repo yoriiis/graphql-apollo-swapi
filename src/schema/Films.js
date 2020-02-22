@@ -4,7 +4,7 @@ const {
 	GraphQLInt
 } = require('graphql');
 
-const FilmType = new GraphQLObjectType({
+const FilmsType = new GraphQLObjectType({
 	name: 'Films',
 	fields: () => ({
 		title: { type: GraphQLString },
@@ -16,4 +16,4 @@ const FilmType = new GraphQLObjectType({
 	})
 });
 
-module.exports = FilmType;
+module.exports = FilmsType;

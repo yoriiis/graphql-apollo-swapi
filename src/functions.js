@@ -3,9 +3,12 @@ const getIdFromUrl = (url) => {
 	return urlSplit[urlSplit.length - 2];
 };
 
-const createPromisesFromUrls = ({ urls, method }) => {
+const createPromisesFromUrls = ({ key, urls, method }) => {
 	const promises = urls.map(async film => {
-		return method(getIdFromUrl(film));
+		return method({
+			key,
+			id: getIdFromUrl(film)
+		});
 	});
 	return Promise.all(promises);
 };

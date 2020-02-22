@@ -1,4 +1,4 @@
-const FilmType = require('./Film');
+const FilmType = require('./Films');
 const PeopleType = require('./People');
 const { createPromisesFromUrls } = require('../functions');
 const {
@@ -25,8 +25,9 @@ const VehiclesType = new GraphQLObjectType({
 			type: GraphQLList(PeopleType),
 			resolve (_source, _args, { dataSources }) {
 				return createPromisesFromUrls({
+					key: 'people',
 					urls: _source.pilots,
-					method: dataSources.swAPI.getPeople.bind(dataSources.swAPI)
+					method: dataSources.swAPI.getCategory.bind(dataSources.swAPI)
 				});
 			}
 		},
@@ -34,8 +35,9 @@ const VehiclesType = new GraphQLObjectType({
 			type: GraphQLList(FilmType),
 			resolve (_source, _args, { dataSources }) {
 				return createPromisesFromUrls({
+					key: 'films',
 					urls: _source.films,
-					method: dataSources.swAPI.getFilm.bind(dataSources.swAPI)
+					method: dataSources.swAPI.getCategory.bind(dataSources.swAPI)
 				});
 			}
 		},
