@@ -24,6 +24,6 @@ Available npm scripts:
 
 ## Licence 🤞
 
-`git-box` is licensed under the [MIT License](http://opensource.org/licenses/MIT).
+`graphql-apollo-swapi` is licensed under the [MIT License](http://opensource.org/licenses/MIT).
 
 Created with ♥ by [@yoriiis](http://github.com/yoriiis).
