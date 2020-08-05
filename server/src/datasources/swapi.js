@@ -4,7 +4,7 @@ const { requestFilterByLimitOffsetPage } = require('../utils');
 class SwAPI extends RESTDataSource {
 	constructor () {
 		super();
-		this.baseURL = 'https://swapi.co/api/';
+		this.baseURL = 'https://swapi.dev/api/';
 	}
 
 	/**
