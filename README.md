@@ -2,7 +2,7 @@
 
 GraphQL & Apollo with SWAPI full server and client.
 
-![GraphQL Playground](./screenshots/graphql-playground.jpg)
+[![GraphQL Playground](./screenshots/graphql-playground.jpg)](https://graphql-apollo-swapi.herokuapp.com)
 
 ## Demo
 
