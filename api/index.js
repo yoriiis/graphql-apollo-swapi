@@ -7,7 +7,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const server = new ApolloServer({
 	schema: schema,
-	introspection: !isProduction,
+	introspection: true,
 	playground: true,
 	dataSources: () => {
 		return {
