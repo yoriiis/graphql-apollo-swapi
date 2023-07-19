@@ -6,7 +6,7 @@ GraphQL & Apollo with SWAPI full server and client.
 
 ## Demo
 
-Online demo is available on [https://graphql-apollo-swapi.herokuapp.com/](https://graphql-apollo-swapi.herokuapp.com/).
+Online demo is available on [https://graphql-apollo-swapi.vercel.app](https://graphql-apollo-swapi.vercel.app).
 
 ## Server
 
