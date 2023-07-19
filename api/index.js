@@ -8,7 +8,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 const server = new ApolloServer({
 	schema: schema,
 	introspection: !isProduction,
-	playground: !isProduction,
+	playground: true,
 	dataSources: () => {
 		return {
 			swAPI: new SwAPI()
