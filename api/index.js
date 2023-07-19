@@ -1,7 +1,7 @@
 const { ApolloServer } = require('apollo-server');
 
-const schema = require('./schema');
-const SwAPI = require('./datasources/swapi');
+const schema = require('../server/src/schema');
+const SwAPI = require('../server/src/datasources/swapi');
 
 const isProduction = process.env.NODE_ENV === 'production';
 

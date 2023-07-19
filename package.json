@@ -9,6 +9,7 @@
   "author": "",
   "main": "index.js",
   "scripts": {
+    "build": "echo \"No build specified\" && exit 0",
     "lint": "eslint -c ./.eslintrc.js .",
     "start": "npm run start:server",
     "start:client": "node ./client/src/index.js",
